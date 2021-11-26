@@ -3,6 +3,7 @@ class tables {
         this.conexao = conexao;
 
         this.createSO();
+        this.createPet();
     }
 
     createSO(){
@@ -23,6 +24,23 @@ class tables {
                 console.log(erro)
             } else{
                 console.log("deu bom")
+            }
+        })
+    }
+    
+    createPet(){
+        const sql = `CREATE TABLE IF NOT EXISTS pets (
+            id int NOT NULL AUTO_INCREMENT, 
+            name varchar(50),
+            image varchar(200),
+            PRIMARY KEY (id)
+        )`
+
+        this.conexao.query(sql, err => {
+            if(err){
+                console.log(err)
+            } else {
+                console.log('tabela pets, criada com sucesso')
             }
         })
     }
